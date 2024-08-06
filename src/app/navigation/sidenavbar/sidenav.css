@@ -1,0 +1,43 @@
+@import url('../../../styles/global.css');
+
+.sidenav {
+    height: 100%;
+    width: 250px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--uiuc-blue);
+    color: white;
+    padding-top: 60px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidenav.open {
+    transform: translateX(0);
+  }
+  
+  .sidenav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+.sidenav-close {
+  position: absolute;
+  top: 10px;
+  left: 3px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+  

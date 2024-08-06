@@ -1,0 +1,50 @@
+@import url('../../../styles/global.css');
+
+/* some of the styling comes from login.css */
+  
+  .form-control {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+  }
+  
+  .form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .form-control-inline {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .form-control-inline:focus {
+    border-color: var(--uiuc-blue);
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+  }
+  
+  select.form-control-inline {
+    width: 100%;
+  }
+
+  .message {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--uiuc-altgeld-orange);
+  }
+  
+  @media (max-width: 768px) {
+    .form-group-inline {
+      flex-direction: column;
+    }
+  }

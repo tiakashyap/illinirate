@@ -1,0 +1,63 @@
+@import url('../../../styles/global.css');
+
+.feedback-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: var(--grey-light);
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .feedback-form {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .feedback-form h2 {
+    font-size: 1.5rem;
+    color: var(--uiuc-blue);
+    margin-bottom: 1rem;
+  }
+  
+  .feedback-form .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .feedback-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--uiuc-blue);
+    font-weight: bold;
+  }
+  
+  .feedback-form .form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--grey-medium);
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .feedback-form .form-control:focus {
+    border-color: var(--uiuc-industrial-blue);
+    outline: none;
+  }
+  
+  .feedback-form .btn {
+    margin-top: 1rem;
+  }
+  
+  .feedback-message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--uiuc-blue);
+  }
+  

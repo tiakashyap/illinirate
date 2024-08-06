@@ -1,0 +1,38 @@
+  :root {
+    --uiuc-blue: #13294B;
+    --uiuc-orange: #FF5F05;
+    --uiuc-altgeld-orange: #C84113;
+    --uiuc-industrial-blue: #1D58A7;
+    --grey-dark: #707372;
+    --grey-medium: #9C9A9D;
+    --grey-light: #C8C6C7;
+    --white: #FFFFFF;
+    --black: #000000;
+    --font-family: 'Source Sans Pro', sans-serif;
+    --heading-font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Body styles */
+  body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    color: black;
+  }
+  
+  /* Heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font-family);
+  }
+
+  /* Link styles */
+  a {
+    color: var(--uiuc-industrial-blue);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: inherit;
+  }

@@ -1,0 +1,90 @@
+@import url('../../../styles/global.css');
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background: var(--grey-light);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .auth-form {
+    background: var(--white); 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    max-width: 400px; 
+    width: 100%; 
+    padding: 20px;
+  }
+  
+  .title-center {
+    text-align: center;
+    color: var(--uiuc-blue); 
+    margin-bottom: 20px;
+    font-size: 2rem; 
+  }
+
+  .logging-in-message {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px; 
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 600; 
+    margin-bottom: 5px; 
+    color: var(--grey-dark); 
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--grey-medium); 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    font-family: var(--font-family); 
+  }
+  
+  .form-control:focus {
+    border-color: var(--uiuc-blue); 
+    outline: none; 
+    box-shadow: 0 0 0 2px rgba(19, 41, 75, 0.25);
+  }
+  
+  .btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-family: var(--font-family); 
+  }
+  
+  .btn-primary {
+    background-color: var(--uiuc-blue);
+    color: var(--white);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--uiuc-altgeld-orange); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem;
+  }
+  

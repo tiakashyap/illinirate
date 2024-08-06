@@ -1,0 +1,31 @@
+@import url('../../../styles/global.css');
+  
+  .verify-email-container {
+    padding-top: 2rem;
+    background-color: var(--grey-light);
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start;
+  }
+  
+  .verify-email-form {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  .title-center {
+    font-family: var(--heading-font-family);
+    margin-bottom: 1rem;
+  }
+  
+  .message {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--uiuc-altgeld-orange);
+  }

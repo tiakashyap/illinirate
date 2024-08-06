@@ -1,0 +1,66 @@
+@import url('../../../styles/global.css');
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: var(--uiuc-blue);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+  }
+  
+  .navbar-left, .navbar-right {
+    display: flex;
+  }
+  
+  .navbar-left a, .navbar-right a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+  }
+  
+  .navbar-left a:hover, .navbar-right a:hover {
+    text-decoration: underline;
+  }
+  
+
+.navbar-link {
+  color: var(--white);
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+  
+.sidenav-toggle {
+  display: none; 
+  font-size: 24px;
+  cursor: pointer;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+    padding: 10px 20px;
+  }
+
+  .navbar-left, .navbar-right {
+    display: none; 
+  }
+
+  .sidenav-toggle {
+    display: block; 
+  }
+
+}

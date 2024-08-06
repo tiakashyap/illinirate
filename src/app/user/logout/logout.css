@@ -1,0 +1,30 @@
+
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--grey-light);
+    text-align: center;
+  }
+  
+  .logout-message {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .logout-message h2 {
+    font-size: 1.5rem;
+    color: var(--uiuc-blue);
+    margin-bottom: 1rem;
+  }
+  
+  .logout-message p {
+    font-size: 1rem;
+    color: var(--grey-dark);
+  }
+  
