@@ -1,4 +1,4 @@
-# illinirate
+# illinirate (IN PROGRESS)
 
 ## Overview
 **illinirate** is a course rating and review platform for the undergraduate program at University of Illinois Urbana-Champaign (UIUC).
