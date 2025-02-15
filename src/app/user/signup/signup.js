@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Semesters, Years } from '../../shared/user/user.js'
 import authService from '../../auth/auth-service.js';
+import AuthContext from '../../auth/auth-context.js';
 import { processError } from '../../../util/error-handling.js'
 import './signup.css'; 
 import '../login/login.css'; 
+import { signOut } from 'firebase/auth';
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
@@ -16,6 +18,20 @@ const Signup = () => {
   const [year, setYear] = useState('');
   const [error, setError] = useState('');
 
+  const { user } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Get the path the user was trying to access
+  const from = location.state?.from || '/'; 
+
+  useEffect(() => {
+    // Redirect to home if the user is already logged in
+    if (user) {
+      navigate(from !== '/login' && from !== '/signin' ? from : '/', { replace: true });
+    }
+  }, [user, navigate]);
+
   const handleSignup = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -24,10 +40,22 @@ const Signup = () => {
     }
 
     try {
+      
       await authService.signup(email, password, firstName, lastName, `${semester} ${year}`);
       setError('');
     } catch (error) {
-      setError(processError(error) || 'An error occurred during sign-up. Please try again.');
+
+      if (error.code === 'auth/email-already-in-use') {
+        // Handle the case where the email is already in use
+        try {
+          const message = await authService.handleEmailAlreadyInUse(email, password);
+          setError(message);
+        } catch (err) {
+          setError(err.message || 'An error occurred during sign up. Please try again.');
+        }
+      } else {
+        setError(error.message || 'An error occurred during sign up. Please try again.');
+      }
     }
   };
 

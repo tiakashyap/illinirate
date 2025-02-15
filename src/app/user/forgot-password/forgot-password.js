@@ -18,13 +18,12 @@ const ForgotPassword = () => {
     setShowMessage(false); // Hide the message while submitting
 
     try {
-      // Simulate an API call
       await authService.forgotPassword(email);
 
-      setMessage('An email has been sent to your inbox to reset your password.');
+      setMessage('If an account with this email exists, a password reset email has been sent.');
       setShowMessage(true);
     } catch (error) {
-      setMessage('There was an error processing your request. Please try again.');
+      setMessage(error.message || 'There was an error processing your request. Please try again.');
       setShowMessage(true);
     } finally {
       setIsSubmitting(false);

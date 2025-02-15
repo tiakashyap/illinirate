@@ -16,6 +16,8 @@ const Navbar = () => {
     setSidenavOpen(false);
   };
 
+  
+
   return (
     <>
       <nav className="navbar">
@@ -23,9 +25,15 @@ const Navbar = () => {
           <Link to="/">Home</Link>
           <Link to="/courses">Courses</Link>
           <Link to="/reviews">Reviews</Link>
+          {user ? (
+            <Link to="/home">{user.email}</Link>
+          ) : (
+            <Link to="/">Home</Link>
+          )}
+
         </div>
         <div className="navbar-right">
-          {user ? (
+          {user && user.emailVerified ? (
             <>
               <Link to="/create-review">Create Review</Link>
               <Link to="/profile">Profile</Link>

@@ -12,6 +12,7 @@ import VerifyEmail from './user/verify-email/verify-email.js';
 import ForgotPassword from './user/forgot-password/forgot-password.js';
 import Logout from './user/logout/logout.js';
 import SubmitFeedback from './user/feedback/feedback.js';
+import Profile from './user/profile/profile.js';
 
 function App() {
   return (
@@ -26,9 +27,8 @@ function App() {
             <Route path="/signin" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/register" element={<Signup />} />
-            <Route path="/verify-email" element={<VerifyEmail />} />
+            
             <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/logout" element={<Logout />} />
             <Route path="/feedback" element={<SubmitFeedback />} />
 
             {/* Protected Routes */}
@@ -36,8 +36,26 @@ function App() {
             <Route
               path="/logout"
               element={
-                <PrivateRoute>
+                <PrivateRoute requiresVerification={true}>
                   <Logout />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/verify-email"
+              element={
+                <PrivateRoute>
+                  <VerifyEmail />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute requiresVerification={true}>
+                  <Profile />
                 </PrivateRoute>
               }
             />

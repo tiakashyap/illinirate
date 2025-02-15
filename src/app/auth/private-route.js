@@ -9,6 +9,10 @@ const PrivateRoute = ({ children, requiresVerification = false }) => {
     return <Navigate to="/login" state={{ from: window.location.pathname }} />;
   }
 
+  if (user && !isVerified) {
+    return <Navigate to="/login" />;
+  }
+
   if (requiresVerification && !isVerified) {
     return <Navigate to="/verify-email" />;
   }

@@ -19,15 +19,6 @@ const courses = firestore.collection("Course");
 /**
  * Updates review counts, averages, and review array in a Firestore document
  * for a course.
- * 
- * @async
- * @param {admin.firestore.DocumentReference} courseDoc - Referenceto the
- * Firestore document for the course.
- * @param {object} changedData - Data of the review that changed (added,
- * updated, or deleted).
- * @param {object} updatedData - Updated data of the review (for updates only).
- * @param {number} change - Indicator (+1 for add, 0 for update, -1 for delete).
- * @return {Promise<void>} A promise that resolves when the update is complete.
  */
 async function updateCounts(courseDoc, changedData, updatedData, change) {
   // Get current snapshot of the Firestore document

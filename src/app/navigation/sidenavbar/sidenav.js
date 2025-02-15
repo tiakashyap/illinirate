@@ -11,7 +11,7 @@ const Sidenav = ({ isOpen, onClose, user }) => {
       <Link to="/home">Home</Link>
       <Link to="/courses">Courses</Link>
       <Link to="/reviews">Reviews</Link>
-      {user ? (
+      {user && user.emailVerified ? (
         <>
           <Link to="/create-review" onClick={onClose}>Create Review</Link>
           <Link to="/profile" onClick={onClose}>Profile</Link>

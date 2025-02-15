@@ -70,9 +70,14 @@ class AuthService {
 
   async login(email, password) {
     try {
-      // Sign user in and update data
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
-      this.userData = await this.setUserData(userCredential.user);
+      const user = userCredential.user;
+      
+      // If unverified email attempts to log in
+      if (!user.emailVerified) {
+        throw new Error('Email not verified. Please check your email for verification link.');
+      }
+      this.userData = await this.setUserData(user);
       this.navigateTo('/'); // Redirect to home page after sign in
     } catch (error) {
       console.error('Error during login:', error.message);
@@ -94,10 +99,12 @@ class AuthService {
       semesterStarted,
       firstName,
       lastName,
-      reviewFeedback: {},
+      reviewFeedback: {}, 
+      reviews: []
     });
 
     this.userData = await this.setUserData(user);
+    await signOut(this.auth);
     this.navigateTo('/verify-email'); // Redirect to email verification page
   }
 
@@ -114,22 +121,58 @@ class AuthService {
   }
 
   async forgotPassword(email) {
-    await sendPasswordResetEmail(this.auth, email);
+    try {
+      await sendPasswordResetEmail(this.auth, email);
+    } catch (error) {
+      // These do not seem to display...
+      if (error.code === 'auth/user-not-found') {
+        throw new Error('No account found with this email address.');
+      } else if (error.code === 'auth/invalid-email') {
+        throw new Error('The email address is not valid.');
+      } else {
+        throw new Error('An error occurred while processing your request.');
+      }
+    }
   }
 
-  async updateUserExtraData(firstName, lastName, firstSemester) {
+  async handleEmailAlreadyInUse(email, password) {
+    try {
+      // Sign in the existing user
+      const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      const user = userCredential.user;
+
+      if (user && !user.emailVerified) {
+        // Send verification email again if not verified
+        await sendEmailVerification(user);
+        return 'An account with this email already exists and is not verified. Please check your email for verification instructions.';
+      } else {
+        await signOut(this.auth);
+        return 'Email already exists. Please use a different email or log in.';
+      }
+    } catch (error) {
+      throw new Error(error.message || 'An error occurred during sign up. Please try again.');
+    }
+  }
+
+  async updateUserExtraData(firstName, lastName, semesterStarted) {
     const user = this.auth.currentUser;
 
     if (user) {
       await updateProfile(user, { displayName: `${firstName} ${lastName}` });
       await updateDoc(doc(this.firestore, "UserExtra", user.uid), {
-        firstSemester,
+        semesterStarted,
         firstName,
         lastName,
       });
 
       this.userData = await this.setUserData(user);
     }
+  }
+
+  async getUserDoc(uid) {
+    const userDocRef = doc(this.firestore, "UserExtra", uid);
+    const userDoc = await getDoc(userDocRef);
+    return userDoc;
   }
 
   async resendVerification() {
